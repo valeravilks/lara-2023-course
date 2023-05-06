@@ -19,5 +19,6 @@ Route::get('/', function() {
 });
 Route::get('/posts', [ Posts::class, 'index' ] );
 Route::get('/posts/create', [ Posts::class, 'create' ] );
+Route::delete('/posts/delete', [ Posts::class, 'destroy' ] );
 Route::get('/posts/{id}', [ Posts::class, 'show' ] );
 Route::post('/posts/create', [ Posts::class, 'store' ] );

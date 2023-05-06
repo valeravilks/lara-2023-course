@@ -71,8 +71,10 @@ class Posts extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $post = Post::find($request['id']);
+        $post->delete();
+        return redirect('/posts');
     }
 }
