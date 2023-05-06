@@ -57,7 +57,11 @@ class Posts extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -65,7 +69,20 @@ class Posts extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|min:4|max:10',
+            'content' => 'required|min:10|max:30'
+        ]);
+
+        $post = Post::find($id);
+
+        if($post) {
+            $post['title'] = $validated['title'];
+            $post['content'] = $validated['content'];
+            $post->save();
+        }
+
+        return redirect("/posts/{$post->id}");
     }
 
     /**

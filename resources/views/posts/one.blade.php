@@ -6,4 +6,5 @@
     <input type="hidden" name="id" value="{{$post['id']}}">
     <button>Delete</button>
 </form>
+<a href="/posts/edit/{{$post['id']}}">Edit post</a>
 <a href="/posts">Back</a>
