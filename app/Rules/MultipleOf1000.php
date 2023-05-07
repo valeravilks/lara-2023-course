@@ -14,7 +14,7 @@ class MultipleOf1000 implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if ( is_integer($value) && $value % 1000 != 0) {
+        if ( !(is_numeric($value) && intval($value) % 1000 == 0) ) {
             $fail('Price is not a multiple of 1000');
         }
     }
