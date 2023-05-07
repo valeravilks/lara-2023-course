@@ -3,4 +3,7 @@
     <li>
         <a href="/posts">All posts</a>
     </li>
+    <li>
+        <a href="/autos">All cars</a>
+    </li>
 </ul>
