@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auto;
+use App\Rules\MultipleOf1000;
 use Illuminate\Http\Request;
 
 class Autos extends Controller
@@ -35,7 +36,7 @@ class Autos extends Controller
         $validated = $request->validate([
             'make' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => 'required|numeric',
+            'price' => [ 'required', 'integer', new MultipleOf1000 ],
         ]);
 
         $auto = Auto::create($validated);
@@ -76,7 +77,7 @@ class Autos extends Controller
         $validated = $request->validate([
             'make' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => 'required|numeric',
+            'price' => [ 'required', 'integer', new MultipleOf1000 ]
         ]);
 
         $auto['make'] = $validated['make'];
