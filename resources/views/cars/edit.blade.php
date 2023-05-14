@@ -7,6 +7,12 @@
         <input type="text" name="brand" value={{ $errors->any() ? old('brand') : $car['brand'] }}>
         <input type="text" name="model" value={{ $errors->any() ? old('model') : $car['model'] }}>
         <input type="text" name="price" value={{ $errors->any() ? old('price') : $car['price'] }}>
+        <x-form.select
+            :options="$gearboxTypes"
+            name="gearbox_types"
+            label="Тип коробки передач"
+            selected="{{ $car['gearbox_types'] }}"
+        />
         <button>Update</button>
     </form>
 

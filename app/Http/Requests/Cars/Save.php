@@ -25,6 +25,7 @@ class Save extends FormRequest
             'brand' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
             'price' => 'required|integer|multiple_of:1000',
+            'gearbox_types' => 'integer',
         ];
     }
 
@@ -34,6 +35,7 @@ class Save extends FormRequest
             'brand' => 'Бренд',
             'model' => 'Модель',
             'price' => 'Цена',
+            'gearbox_types' => 'Тип коробки передач',
         ];
     }
 }

@@ -22,7 +22,8 @@ class Cars extends Controller
      */
     public function create()
     {
-        return view('cars.create');
+        $gearboxTypes = config('gearbox-types');
+        return view('cars.create', compact('gearboxTypes'));
     }
 
     /**
@@ -40,7 +41,8 @@ class Cars extends Controller
     public function show(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('cars.one', compact('car'));
+        $gearboxType = config('gearbox-types')[$car['gearbox_types']];
+        return view('cars.one', compact(['car' , 'gearboxType']));
     }
 
     /**
@@ -49,7 +51,8 @@ class Cars extends Controller
     public function edit(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('cars.edit', compact('car'));
+        $gearboxTypes = config('gearbox-types');
+        return view('cars.edit', compact(['car', 'gearboxTypes']));
     }
 
     /**

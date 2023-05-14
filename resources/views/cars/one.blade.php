@@ -1,13 +1,16 @@
 <h1>Car: {{ $car['brand'] }} {{ $car['model'] }}</h1>
 <ul>
     <li>
-        <strong>Make:</strong> {{ $car['brand'] }}
+        <strong>Бренд:</strong> {{ $car['brand'] }}
     </li>
     <li>
-        <strong>Model:</strong> {{ $car['model'] }}
+        <strong>Модель:</strong> {{ $car['model'] }}
     </li>
     <li>
-        <strong>Price:</strong> {{ $car['price'] }}
+        <strong>Цена:</strong> {{ $car['price'] }}
+    </li>
+    <li>
+        <strong>Тип коробки передач:</strong> {{ $gearboxType }}
     </li>
 </ul>
 
