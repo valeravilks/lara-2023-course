@@ -22,7 +22,7 @@ class Cars extends Controller
      */
     public function create()
     {
-        return view('cars/create');
+        return view('cars.create');
     }
 
     /**
@@ -30,10 +30,7 @@ class Cars extends Controller
      */
     public function store(CarsSave $request)
     {
-        $validated = $request->validated();
-
-        $car = Car::create($validated);
-
+        $car = Car::create($request->validated());
         return redirect("/cars/{$car->id}");
     }
 
@@ -61,15 +58,7 @@ class Cars extends Controller
     public function update(CarsSave $request, string $id)
     {
         $car = Car::findOrFail($id);
-
-        $validated = $request->validated();
-
-        $car['brand'] = $validated['brand'];
-        $car['model'] = $validated['model'];
-        $car['price'] = $validated['price'];
-
-        $car->save();
-
+        $car->update($request->validated());
         return redirect("/cars/{$car->id}");
     }
 

@@ -14,7 +14,6 @@ class Posts extends Controller
     public function index()
     {
         $posts = Post::all();
-
         return view('posts.index', compact('posts'));
     }
 
@@ -31,8 +30,7 @@ class Posts extends Controller
      */
     public function store(SaveRequest $request)
     {
-        $validated = $request->validated();
-        $post = Post::create($validated);
+        $post = Post::create($request->validated());
         return redirect("/posts/{$post->id}");
     }
 
@@ -42,7 +40,6 @@ class Posts extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-
         return view('posts.one', compact('post'));
     }
     /**
@@ -51,7 +48,6 @@ class Posts extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-
         return view('posts.edit', compact('post'));
     }
 
@@ -60,15 +56,8 @@ class Posts extends Controller
      */
     public function update(SaveRequest $request, string $id)
     {
-        $validated = $request->validated();
         $post = Post::findOrFail($id);
-
-        if($post) {
-            $post['title'] = $validated['title'];
-            $post['content'] = $validated['content'];
-            $post->save();
-        }
-
+        $post->update($request->validated());
         return redirect("/posts/{$post->id}");
     }
 
