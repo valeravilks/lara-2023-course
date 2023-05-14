@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auto;
-use App\Rules\MultipleOf1000;
 use Illuminate\Http\Request;
+use App\Models\Car;
 
-class Autos extends Controller
+class Cars extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $autos = Auto::all();
+        $car = Car::all();
 
-        return view('autos.index', [
-            'autos' => $autos
+        return view('cars.index', [
+            'cars' => $car
         ]);
     }
 
@@ -25,7 +24,7 @@ class Autos extends Controller
      */
     public function create()
     {
-        return view('autos/create');
+        return view('cars/create');
     }
 
     /**
@@ -34,14 +33,14 @@ class Autos extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'make' => 'required|min:1|max:15',
+            'brand' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => [ 'required', 'integer', new MultipleOf1000 ],
+            'price' => [ 'required', 'integer' ],
         ]);
 
-        $auto = Auto::create($validated);
+        $car = Car::create($validated);
 
-        return redirect("/autos/{$auto->id}");
+        return redirect("/cars/{$car->id}");
     }
 
     /**
@@ -49,10 +48,10 @@ class Autos extends Controller
      */
     public function show(string $id)
     {
-        $auto = Auto::find($id);
+        $car = Car::find($id);
 
-        return view('autos/one', [
-            'auto' => $auto,
+        return view('cars.one', [
+            'car' => $car,
         ]);
     }
 
@@ -61,9 +60,9 @@ class Autos extends Controller
      */
     public function edit(string $id)
     {
-        $auto = Auto::find($id);
-        return view('autos.edit', [
-            'auto' => $auto 
+        $car = Car::find($id);
+        return view('cars.edit', [
+            'car' => $car 
         ]);
     }
 
@@ -72,21 +71,21 @@ class Autos extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $auto = Auto::find($id);
+        $car = Car::find($id);
 
         $validated = $request->validate([
-            'make' => 'required|min:1|max:15',
+            'brand' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => [ 'required', 'integer', new MultipleOf1000 ]
+            'price' => [ 'required', 'integer']
         ]);
 
-        $auto['make'] = $validated['make'];
-        $auto['model'] = $validated['model'];
-        $auto['price'] = $validated['price'];
+        $car['brand'] = $validated['brand'];
+        $car['model'] = $validated['model'];
+        $car['price'] = $validated['price'];
 
-        $auto->save();
+        $car->save();
 
-        return redirect("/autos/{$auto->id}");
+        return redirect("/cars/{$car->id}");
     }
 
     /**
@@ -94,8 +93,8 @@ class Autos extends Controller
      */
     public function destroy(Request $request)
     {
-        $auto = Auto::find($request['id']);
-        $auto->delete();
-        return redirect('/autos');
+        $car = Car::find($request['id']);
+        $car->delete();
+        return redirect('/cars');
     }
 }

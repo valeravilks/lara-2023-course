@@ -1,8 +1,8 @@
 <h1>Create New Car</h1>
 
-<form method="post" action="/autos/create">
+<form method="post" action="/cars/create">
     @csrf
-    <input type="text" name="make" placeholder="Make" value={{ old('make') }}>
+    <input type="text" name="brand" placeholder="Brand" value={{ old('brand') }}>
     <input type="text" name="model" placeholder="Model" value={{ old('model') }}>
     <input type="text" name="price" placeholder="Price" value={{ old('price') }}>
     <button>Create</button>
@@ -16,4 +16,4 @@
     </ul>
 @endif
 
-<a href="/autos">Back to cars</a>
+<a href="/cars">Back to cars</a>

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Posts;
-use App\Http\Controllers\Autos;
+use App\Http\Controllers\cars;
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +27,10 @@ Route::delete('/posts/delete', [ Posts::class, 'destroy' ] );
 Route::get('/posts/{id}', [ Posts::class, 'show' ] );
 Route::post('/posts/create', [ Posts::class, 'store' ] );
 
-Route::get('/autos', [ Autos::class, 'index' ]);
-Route::get('/autos/create', [ Autos::class, 'create' ]);
-Route::delete('/autos/delete', [ Autos::class, 'destroy']);
-Route::put('autos/edit/update/{id}', [ Autos::class, 'update' ]);
-Route::get('autos/edit/{id}', [ Autos::class, 'edit' ]);
-Route::get('/autos/{id}', [ Autos::class, 'show' ]);
-Route::post('/autos/create', [ Autos::class, 'store' ]);
+Route::get('/cars', [ Cars::class, 'index' ]);
+Route::get('/cars/create', [ Cars::class, 'create' ]);
+Route::delete('/cars/delete', [ Cars::class, 'destroy']);
+Route::put('/cars/edit/update/{id}', [ Cars::class, 'update' ]);
+Route::get('/cars/edit/{id}', [ Cars::class, 'edit' ]);
+Route::get('/cars/{id}', [ Cars::class, 'show' ]);
+Route::post('/cars/create', [ Cars::class, 'store' ]);
