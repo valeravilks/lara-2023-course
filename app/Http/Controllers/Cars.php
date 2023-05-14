@@ -46,7 +46,7 @@ class Cars extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function findOrFail(string $id)
     {
         $car = Car::find($id);
 
@@ -60,7 +60,7 @@ class Cars extends Controller
      */
     public function edit(string $id)
     {
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
         return view('cars.edit', [
             'car' => $car 
         ]);
@@ -71,7 +71,7 @@ class Cars extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
 
         $validated = $request->validate([
             'brand' => 'required|min:1|max:15',
@@ -93,7 +93,7 @@ class Cars extends Controller
      */
     public function destroy(Request $request)
     {
-        $car = Car::find($request['id']);
+        $car = Car::findOrFail($request['id']);
         $car->delete();
         return redirect('/cars');
     }

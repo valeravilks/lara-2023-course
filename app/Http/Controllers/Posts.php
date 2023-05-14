@@ -57,7 +57,7 @@ class Posts extends Controller
      */
     public function edit(string $id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
         return view('posts.edit', [
             'post' => $post
@@ -74,7 +74,7 @@ class Posts extends Controller
             'content' => 'required|min:10|max:30'
         ]);
 
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
         if($post) {
             $post['title'] = $validated['title'];
@@ -90,7 +90,7 @@ class Posts extends Controller
      */
     public function destroy(Request $request)
     {
-        $post = Post::find($request['id']);
+        $post = Post::findOrFail($request['id']);
         $post->delete();
         return redirect('/posts');
     }
