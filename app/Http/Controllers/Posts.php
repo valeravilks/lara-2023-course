@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\Posts\Save as SaveRequest;
 
 class Posts extends Controller
 {
@@ -28,13 +29,9 @@ class Posts extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveRequest $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|min:4|max:10',
-            'content' => 'required|min:10|max:30'
-        ]);
-
+        $validated = $request->validated();
         $post = Post::create($validated);
         return redirect("/posts/{$post->id}");
     }
@@ -61,13 +58,9 @@ class Posts extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SaveRequest $request, string $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|min:4|max:10',
-            'content' => 'required|min:10|max:30'
-        ]);
-
+        $validated = $request->validated();
         $post = Post::findOrFail($id);
 
         if($post) {

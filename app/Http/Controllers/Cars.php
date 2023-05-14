@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Cars\Save as CarsSave;
 use Illuminate\Http\Request;
 use App\Models\Car;
 
@@ -27,13 +28,9 @@ class Cars extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarsSave $request)
     {
-        $validated = $request->validate([
-            'brand' => 'required|min:1|max:15',
-            'model' => 'required|min:1|max:15',
-            'price' => 'required|integer|multiple_of:1000',
-        ]);
+        $validated = $request->validated();
 
         $car = Car::create($validated);
 
@@ -61,15 +58,11 @@ class Cars extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CarsSave $request, string $id)
     {
         $car = Car::findOrFail($id);
 
-        $validated = $request->validate([
-            'brand' => 'required|min:1|max:15',
-            'model' => 'required|min:1|max:15',
-            'price' => 'required|integer|multiple_of:1000',
-        ]);
+        $validated = $request->validated();
 
         $car['brand'] = $validated['brand'];
         $car['model'] = $validated['model'];
