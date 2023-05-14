@@ -21,16 +21,16 @@ Route::get('/', function() {
 });
 Route::get('/posts', [ Posts::class, 'index' ] );
 Route::get('/posts/create', [ Posts::class, 'create' ] );
-Route::put('/posts/edit/update/{id}', [ Posts::class, 'update' ] );
-Route::get('/posts/edit/{id}', [ Posts::class, 'edit' ] );
-Route::delete('/posts/delete', [ Posts::class, 'destroy' ] );
+Route::post('/posts', [ Posts::class, 'store' ] );
 Route::get('/posts/{id}', [ Posts::class, 'show' ] );
-Route::post('/posts/create', [ Posts::class, 'store' ] );
+Route::get('/posts/{id}/edit', [ Posts::class, 'edit' ] );
+Route::put('/posts}', [ Posts::class, 'update' ] );
+Route::delete('/posts', [ Posts::class, 'destroy' ] );
 
 Route::get('/cars', [ Cars::class, 'index' ]);
 Route::get('/cars/create', [ Cars::class, 'create' ]);
-Route::delete('/cars/delete', [ Cars::class, 'destroy']);
-Route::put('/cars/edit/update/{id}', [ Cars::class, 'update' ]);
-Route::get('/cars/edit/{id}', [ Cars::class, 'edit' ]);
+Route::post('/cars', [ Cars::class, 'store' ]);
 Route::get('/cars/{id}', [ Cars::class, 'show' ]);
-Route::post('/cars/create', [ Cars::class, 'store' ]);
+Route::get('/cars/{id}/edit', [ Cars::class, 'edit' ]);
+Route::put('/cars/{id}', [ Cars::class, 'update' ]);
+Route::delete('/cars', [ Cars::class, 'destroy']);
