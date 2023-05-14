@@ -23,7 +23,7 @@ class Save extends FormRequest
     {
         return [
             'brand' => 'required|min:1|max:15',
-            'model' => 'required|min:1|max:15',
+            'model' => 'required|min:1|max:15|unique:cars,model',
             'price' => 'required|integer|multiple_of:1000',
             'gearbox_types' => 'integer',
         ];
