@@ -1,5 +1,5 @@
 <h1>Create New Post</h1>
-<form method="post" action="/posts/create">
+<form method="post" action="/posts">
     @csrf
     <input type="text" name="title" placeholder="Title" value="{{ old('title') }}">
     <input type="text" name="content" placeholder="Content" value="{{ old('content') }}">

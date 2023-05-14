@@ -1,5 +1,5 @@
 <h1>Edit post: {{ $post['title'] }} </h1>
-<form method="post" action="/posts/edit/update/{{ $post['id'] }}">
+<form method="post" action="/posts/{{ $post['id'] }}">
     @csrf
     @method("PUT")
     <input type="text" name="title" placeholder="Title" value="{{ $errors->any() ? old('title') :  $post['title'] }}">

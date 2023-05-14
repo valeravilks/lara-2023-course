@@ -24,8 +24,8 @@ Route::get('/posts/create', [ Posts::class, 'create' ] );
 Route::post('/posts', [ Posts::class, 'store' ] );
 Route::get('/posts/{id}', [ Posts::class, 'show' ] );
 Route::get('/posts/{id}/edit', [ Posts::class, 'edit' ] );
-Route::put('/posts}', [ Posts::class, 'update' ] );
-Route::delete('/posts', [ Posts::class, 'destroy' ] );
+Route::put('/posts/{id}', [ Posts::class, 'update' ] );
+Route::delete('/posts/{id}', [ Posts::class, 'destroy' ] );
 
 Route::get('/cars', [ Cars::class, 'index' ]);
 Route::get('/cars/create', [ Cars::class, 'create' ]);
@@ -33,4 +33,4 @@ Route::post('/cars', [ Cars::class, 'store' ]);
 Route::get('/cars/{id}', [ Cars::class, 'show' ]);
 Route::get('/cars/{id}/edit', [ Cars::class, 'edit' ]);
 Route::put('/cars/{id}', [ Cars::class, 'update' ]);
-Route::delete('/cars', [ Cars::class, 'destroy']);
+Route::delete('/cars/{id}', [ Cars::class, 'destroy']);

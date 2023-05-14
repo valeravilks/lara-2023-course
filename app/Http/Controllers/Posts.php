@@ -20,7 +20,7 @@ class Posts extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('posts.create');
     }
@@ -82,9 +82,9 @@ class Posts extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
-        $post = Post::findOrFail($request['id']);
+        $post = Post::findOrFail($id);
         $post->delete();
         return redirect('/posts');
     }
