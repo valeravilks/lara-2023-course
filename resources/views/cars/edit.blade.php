@@ -1,6 +1,6 @@
 <h1> Edit: {{ $car['brand'] }} {{ $car['model'] }}</h1>
 
-<form method="post" action="/cars/edit/update/{{ $car['id'] }}">
+<form method="post" action="/cars/{{ $car['id'] }}">
     @csrf
     @method("PUT")
     <input type="text" name="brand" value={{ $errors->any() ? old('brand') : $car['brand'] }}>

@@ -11,11 +11,11 @@
     </li>
 </ul>
 
-<form method="post" action="/cars/delete">
+<form method="post" action="/cars/{{ $car['id'] }}">
     @csrf
     @method("DELETE")
     <input type="hidden" name="id" value="{{ $car['id'] }}">
     <button>Delete</button>
 </form>
-<a href="/cars/edit/{{ $car['id'] }}">Edit</a>
+<a href="/cars/{{ $car['id'] }}/edit">Edit</a>
 <a href="/cars">Back to cars</a>

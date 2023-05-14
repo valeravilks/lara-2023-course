@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Posts;
-use App\Http\Controllers\cars;
+use App\Http\Controllers\Cars;
 
 use Illuminate\Support\Facades\Route;
 

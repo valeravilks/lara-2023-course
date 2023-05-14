@@ -1,6 +1,6 @@
 <h1>Create New Car</h1>
 
-<form method="post" action="/cars/create">
+<form method="post" action="/cars">
     @csrf
     <input type="text" name="brand" placeholder="Brand" value={{ old('brand') }}>
     <input type="text" name="model" placeholder="Model" value={{ old('model') }}>
