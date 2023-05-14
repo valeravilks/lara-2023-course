@@ -35,7 +35,7 @@ class Cars extends Controller
         $validated = $request->validate([
             'brand' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => [ 'required', 'integer' ],
+            'price' => 'required|integer|multiple_of:1000',
         ]);
 
         $car = Car::create($validated);
@@ -76,7 +76,7 @@ class Cars extends Controller
         $validated = $request->validate([
             'brand' => 'required|min:1|max:15',
             'model' => 'required|min:1|max:15',
-            'price' => [ 'required', 'integer']
+            'price' => 'required|integer|multiple_of:1000',
         ]);
 
         $car['brand'] = $validated['brand'];
