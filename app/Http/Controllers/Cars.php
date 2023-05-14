@@ -13,10 +13,7 @@ class Cars extends Controller
     public function index()
     {
         $car = Car::all();
-
-        return view('cars.index', [
-            'cars' => $car
-        ]);
+        return view('cars.index', compact('cars'));
     }
 
     /**
@@ -49,10 +46,7 @@ class Cars extends Controller
     public function show(string $id)
     {
         $car = Car::findOrFail($id);
-
-        return view('cars.one', [
-            'car' => $car,
-        ]);
+        return view('cars.one', compact('car'));
     }
 
     /**
@@ -61,9 +55,7 @@ class Cars extends Controller
     public function edit(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('cars.edit', [
-            'car' => $car 
-        ]);
+        return view('cars.edit', compact('car'));
     }
 
     /**

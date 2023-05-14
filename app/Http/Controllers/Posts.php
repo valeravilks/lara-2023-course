@@ -14,9 +14,7 @@ class Posts extends Controller
     {
         $posts = Post::all();
 
-        return view('posts.index', [
-            'posts' => $posts
-        ]);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -48,9 +46,7 @@ class Posts extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('posts.one', [
-            'post' => $post
-        ]);
+        return view('posts.one', compact('post'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -59,9 +55,7 @@ class Posts extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('posts.edit', [
-            'post' => $post
-        ]);
+        return view('posts.edit', compact('post'));
     }
 
     /**
