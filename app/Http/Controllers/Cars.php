@@ -46,9 +46,9 @@ class Cars extends Controller
     /**
      * Display the specified resource.
      */
-    public function findOrFail(string $id)
+    public function show(string $id)
     {
-        $car = Car::find($id);
+        $car = Car::findOrFail($id);
 
         return view('cars.one', [
             'car' => $car,
