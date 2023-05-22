@@ -1,7 +1,7 @@
 <x-layout.main>
     <h1> Edit: {{ $car['brand'] }} {{ $car['model'] }}</h1>
 
-    <form method="post" action="/cars/{{ $car['id'] }}">
+    <form method="post" action="{{ route('cars.update', $car->id) }}">
         @csrf
         @method("PUT")
         <input type="text" name="brand" value={{ $errors->any() ? old('brand') : $car['brand'] }}>
@@ -19,10 +19,10 @@
     @if($errors->any())
     <ul>
         @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>   
+            <li>{{ $error }}</li>
         @endforeach
     </ul>
     @endif
 
-    <a href="/cars/{{ $car['id'] }}">Back</a>
+    <a href="{{ route('cars.index') }}">Back</a>
 </x-layout.main>

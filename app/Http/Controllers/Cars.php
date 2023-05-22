@@ -32,7 +32,7 @@ class Cars extends Controller
     public function store(CarsSave $request)
     {
         $car = Car::create($request->validated());
-        return redirect("/cars/{$car->id}");
+        return redirect("/cars/{$car->id}")->with('create', 'Create new Car');
     }
 
     /**
@@ -42,7 +42,7 @@ class Cars extends Controller
     {
         $car = Car::findOrFail($id);
         $gearboxType = config('gearbox-types')[$car['gearbox_types']];
-        return view('cars.one', compact(['car' , 'gearboxType']));
+        return view('cars.single', compact(['car' , 'gearboxType']));
     }
 
     /**
@@ -62,7 +62,7 @@ class Cars extends Controller
     {
         $car = Car::findOrFail($id);
         $car->update($request->validated());
-        return redirect("/cars/{$car->id}");
+        return redirect("/cars/{$car->id}")->with('notification', 'Car updated!');
     }
 
     /**

@@ -1,7 +1,7 @@
 <x-layout.main>
     <h1>Create New Car</h1>
 
-    <form method="post" action="/cars">
+    <form method="post" action="{{ route('cars.store') }}">
         @csrf
         <input type="text" name="brand" placeholder="Brand" value={{ old('brand') }}>
         <input type="text" name="model" placeholder="Model" value={{ old('model') }}>
@@ -22,5 +22,5 @@
         </ul>
     @endif
 
-    <a href="/cars">Back to cars</a>
+    <a href="{{ route('cars.index') }}">Back to cars</a>
     </x-layout.main>
