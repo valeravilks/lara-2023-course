@@ -51,7 +51,7 @@ class Cars extends Controller
     public function store(CarsSave $request)
     {
         $car = Car::create($request->validated());
-        return redirect("/cars/{$car->id}")->with('create', 'Create new Car');
+        return redirect("/cars/{$car->id}")->with('notification', 'Create new Car');
     }
 
     /**
