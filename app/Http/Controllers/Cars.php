@@ -13,8 +13,28 @@ class Cars extends Controller
      */
     public function index()
     {
+        // Тут нужно добавить какое-то исключение, так как ранее в этом помогал findoffail
         $cars = Car::all();
         return view('cars.index', compact('cars'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function trash()
+    {
+        $cars = Car::onlyTrashed()->get();
+        return view('cars.index', compact('cars'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function restore(string $id)
+    {
+        $car = Car::onlyTrashed()->find($id);
+        $car->restore();
+        return redirect(route('cars.index'))->with('notification', 'Car restored!');
     }
 
     /**
@@ -72,6 +92,6 @@ class Cars extends Controller
     {
         $car = Car::findOrFail($request['id']);
         $car->delete();
-        return redirect('/cars');
+        return redirect('/cars')->with('notification', 'Car move to trash!');
     }
 }
