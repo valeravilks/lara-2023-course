@@ -13,7 +13,6 @@ class Cars extends Controller
      */
     public function index()
     {
-        // Тут нужно добавить какое-то исключение, так как ранее в этом помогал findoffail
         $cars = Car::all();
         return view('cars.index', compact('cars'));
     }
